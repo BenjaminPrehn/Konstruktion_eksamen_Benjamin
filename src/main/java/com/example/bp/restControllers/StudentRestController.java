@@ -14,11 +14,14 @@ public class StudentRestController {
     @Autowired
     private StudentService studentService;
 
+    // Get all Students trough REST
     @GetMapping("/students")
     public List<Student> getStudents(){
         return studentService.getAll();
     }
 
+
+    // Get Students by id trough REST
     @GetMapping("/students/{studentId}")
     public Student getStudent(@PathVariable int studentId){
         Student theStudent = studentService.findByStudentId(studentId);
@@ -30,6 +33,7 @@ public class StudentRestController {
         return theStudent;
     }
 
+    // Create Students With REST
     @PostMapping("/students")
     public Student addStudent(@RequestBody Student theStudent){
 
@@ -41,22 +45,22 @@ public class StudentRestController {
 
     }
 
+    // Update students with Rest
         @PutMapping("/students")
         public Student updateStudent(@RequestBody Student theStudent){
 
-            studentService.save(theStudent);
+           studentService.save(theStudent);
+           return theStudent;
+       }
 
-            return theStudent;
+
+    // Delete students with Rest
+        @DeleteMapping("/students/{id}")
+        void deleteStudent(@PathVariable Long id){
+
+        studentService.delete(id);
+
         }
-
-        @DeleteMapping("/students/{studentId}")
-        void deleteStudent(@PathVariable Student studentId){
-
-        studentService.delete(studentId);
-
-        }
-
-
 
     }
 

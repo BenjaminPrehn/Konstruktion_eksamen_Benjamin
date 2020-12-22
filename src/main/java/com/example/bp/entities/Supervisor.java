@@ -1,10 +1,7 @@
 package com.example.bp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Supervisor {
@@ -24,11 +21,12 @@ public class Supervisor {
     public Supervisor() {
     }
 
-    public Supervisor(String firstname, String lastname, String email) {
-        super();
+
+    public Supervisor(String firstname, String lastname, String email, List<Student> students) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.students = students;
     }
 
     public long getSupervisorId() {
@@ -70,4 +68,6 @@ public class Supervisor {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+
 }

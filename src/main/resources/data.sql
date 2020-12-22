@@ -1,7 +1,9 @@
+
+-- INSERT DATA TO SUPERVISOR
 insert into supervisor values (1, 'Ben', 'Jakob', 'Ben@ben.com');
-insert into supervisor values (2, 'Karl', 'Jakob', 'Julli@juli.com');
+insert into supervisor values (2, 'Karl', 'Johannes', 'Joe@google.com');
 
-
-insert into student values (1, 'ben@ben.dk', 'Hello', 'World', 1);
-insert into student values (2, 'ben@ben.dk', 'Hello', 'World', 1);
-insert into student values (3, 'ben@ben.dk', 'Ben', 'Ben', 1);
+-- INSERT DATA TO STUDENT
+insert into student values (1, 'Glade@dage.com', 'Summer', 'Sumarum', 1);
+insert into student values (2, 'Hello@ben.dk', 'Hello', 'World', 1);
+insert into student values (3, 'Sum@gmail.com', 'Ben', 'Jakob', 2);

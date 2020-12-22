@@ -75,14 +75,5 @@ public class Student {
         return supervisor.getSupervisorId();
     }
 
-   // public void setSupervisorId(long supervisorId) {
-    //    this.supervisor.setSupervisorId(supervisorId);
-   // }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "supervisor=" + supervisor.getSupervisorId() +
-                '}';
-    }
 }
