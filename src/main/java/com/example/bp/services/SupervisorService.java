@@ -13,20 +13,4 @@ public class SupervisorService {
     @Autowired
     SupervisorRepository supervisorRepository;
 
-    public Supervisor save(Supervisor supervisor){
-        return supervisorRepository.save(supervisor);
-    }
-
-    public List<Supervisor> getAll(){
-        return supervisorRepository.findAll();
-    }
-
-    public Supervisor findBySupervisorId(long theId){
-        return supervisorRepository.findBySupervisorId(theId);
-    }
-
-    public void delete(Supervisor theSupervisor){
-        supervisorRepository.delete(theSupervisor);
-    }
-
 }

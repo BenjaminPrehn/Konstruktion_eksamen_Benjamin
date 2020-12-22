@@ -4,28 +4,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Supervisor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="supervisor_seq")
-    @SequenceGenerator(name="supervisor_seq",sequenceName="supervisor_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long supervisorId;
 
     private String firstname;
     private String lastname;
     private String email;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
-            fetch = FetchType.LAZY)
-    @JoinTable(name = "student_supervisor",
-            joinColumns = @JoinColumn(name="supervisor_Id"),
-            inverseJoinColumns = @JoinColumn(name="student_Id")
-    )
-
-    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supervisor")
     private List<Student> students;
+
 
     public Supervisor() {
     }

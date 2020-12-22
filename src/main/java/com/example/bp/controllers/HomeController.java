@@ -26,51 +26,7 @@ public class HomeController {
     @GetMapping("/")
     public String showHome(Model model){
 
-        // Show All Supervisors
-        List<Supervisor> supervisors = supervisorService.getAll();
-        model.addAttribute("supervisors", supervisors);
-
-        // Show All Students
-        List<Student> students = studentService.getAll();
-        model.addAttribute("students", students);
         return "index";
     }
-
-    @GetMapping("/new-student")
-    public String showStudentForm(Model model){
-        Student newStudent = new Student();
-        List<Supervisor> supervisors = supervisorService.getAll();
-        model.addAttribute("students", newStudent);
-        model.addAttribute("supervisors", supervisors);
-
-        return "new-student";
-    }
-
-    @PostMapping("/save-new-student")
-    public String saveStudent(Model model, Student student){
-        studentService.save(student);
-
-        return"redirect:/";
-    }
-
-    @GetMapping("/update-student")
-    public String updateStudent(@RequestParam("id") long theId, Model model){
-        Student theStudent = studentService.findByStudentId(theId);
-        List<Supervisor> supervisors = supervisorService.getAll();
-        model.addAttribute("students", theStudent);
-        model.addAttribute("supervisors", supervisors);
-
-        return "update-student";
-    }
-
-    @GetMapping("/delete-student")
-    public String deleteStudent(@RequestParam("id") long theId, Model model){
-        Student theStudent = studentService.findByStudentId(theId);
-        studentService.delete(theStudent);
-        return "redirect:/";
-    }
-
-
-
 
 }

@@ -3,37 +3,32 @@ package com.example.bp.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq")
-    @SequenceGenerator(name="student_seq",sequenceName="student_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long studentId;
 
     private String firstname;
     private String lastname;
     private String email;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
-            fetch = FetchType.LAZY)
-    @JoinTable(name = "student_supervisor",
-            joinColumns = @JoinColumn(name="student_id"),
-            inverseJoinColumns = @JoinColumn(name="supervisor_id"))
     @JsonIgnore
-    private List<Supervisor> supervisors;
+    @ManyToOne
+    @JoinColumn(name = "supervisor_id")
+    private Supervisor supervisor;
 
     public Student() {
     }
 
-    public Student(String firstname, String lastname, String email) {
-        super();
+    public Student(String firstname, String lastname, String email, Supervisor supervisor) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.supervisor = supervisor;
     }
 
     public long getStudentId() {
@@ -68,18 +63,26 @@ public class Student {
         this.email = email;
     }
 
-    public List<Supervisor> getSupervisors() {
-        return supervisors;
+    public Supervisor getSupervisor() {
+        return supervisor;
     }
 
-    public void setSupervisors(List<Supervisor> supervisors) {
-        this.supervisors = supervisors;
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
     }
 
-    public void addSupervisor(Supervisor supervisor){
-        if (supervisors == null){
-            supervisors = new ArrayList<>();
-        }
-        supervisors.add(supervisor);
+    public long getSupervisorId(){
+        return supervisor.getSupervisorId();
+    }
+
+   // public void setSupervisorId(long supervisorId) {
+    //    this.supervisor.setSupervisorId(supervisorId);
+   // }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "supervisor=" + supervisor.getSupervisorId() +
+                '}';
     }
 }

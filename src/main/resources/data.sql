@@ -1,5 +1,7 @@
--- INSERT SUPERVISOR
-insert into supervisor (supervisor_id, firstname, lastname, email) values (nextval('supervisor_seq'), 'John', 'Warton', 'warton@gmail.com');
+insert into supervisor values (1, 'Ben', 'Jakob', 'Ben@ben.com');
+insert into supervisor values (2, 'Karl', 'Jakob', 'Julli@juli.com');
 
--- INSERT STUDENT
-insert into student (student_id, firstname, lastname, email) values (nextval('student_seq'), 'Ben', 'Prehn', 'benj075d@stud.kea.dk');
+
+insert into student values (1, 'ben@ben.dk', 'Hello', 'World', 1);
+insert into student values (2, 'ben@ben.dk', 'Hello', 'World', 1);
+insert into student values (3, 'ben@ben.dk', 'Ben', 'Ben', 1);
